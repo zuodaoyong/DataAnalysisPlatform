@@ -8,6 +8,7 @@
   	<module>Log-collect-web</module>
   	<module>Analysis-Common</module>
   	<module>Log-app</module>
+  	<module>Analysis-Flume</module>
   </modules>
   <dependencyManagement>
 		<dependencies>

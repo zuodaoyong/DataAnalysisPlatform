@@ -47,16 +47,22 @@ public class CollectLogController {
 	public void sendMessage(AppLogEntity e) {
 		//创建生产者
 		KafkaProducerService producer=new KafkaProducerService(KafkaProperties.KAFKA_SERVER_URL,true);
-		//发送消息
-		producer.sendMessage(Constants.TOPIC_APP_STARTUP,JSONObject.toJSONString(e.getAppStartupLogs()));
-		producer.sendMessage(Constants.TOPIC_APP_ERRROR,JSONObject.toJSONString(e.getAppErrorLogs()));
-		producer.sendMessage(Constants.TOPIC_APP_EVENT,JSONObject.toJSONString(e.getAppEventLogs()));
-		producer.sendMessage(Constants.TOPIC_APP_PAGE,JSONObject.toJSONString(e.getAppPageLogs()));
-		producer.sendMessage(Constants.TOPIC_APP_USAGE,JSONObject.toJSONString(e.getAppUsageLogs()));
+		sendMessage(producer,Constants.TOPIC_APP_STARTUP,e.getAppStartupLogs());
+		sendMessage(producer,Constants.TOPIC_APP_ERRROR,e.getAppErrorLogs());
+		sendMessage(producer,Constants.TOPIC_APP_EVENT,e.getAppEventLogs());
+		sendMessage(producer,Constants.TOPIC_APP_PAGE,e.getAppPageLogs());
+		sendMessage(producer,Constants.TOPIC_APP_USAGE,e.getAppUsageLogs());
 	    //关闭
 		producer.close();
 	}
 
+	private void sendMessage(KafkaProducerService producer,String topic,AppBaseLog[] logs){
+		for(AppBaseLog log:logs){
+			//发送消息
+			producer.sendMessage(topic,JSONObject.toJSONString(log));
+		}
+	}
+	
 	/**
 	 * 修正时间
 	 */
