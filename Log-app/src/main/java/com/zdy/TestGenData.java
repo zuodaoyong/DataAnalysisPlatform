@@ -137,7 +137,7 @@ public class TestGenData {
 			appStartupLog.setScreenSize(screenSizes[random.nextInt(screenSizes.length)]);
 			appStartupLog.setOsType(osTypes[random.nextInt(osTypes.length)]);
 			appStartupLog.setBrand(brands[random.nextInt(brands.length)]);
-			appStartupLog.setCreatedAtMs(createdAtMsS[random.nextInt(createdAtMsS.length)]);
+			appStartupLog.setCreatedAtMs(System.currentTimeMillis());
 			result[i] = appStartupLog;
 		}
 		return result;
@@ -160,7 +160,7 @@ public class TestGenData {
 			appPageLog.setStayDurationSecs(stayDurationSecs);
 			appPageLog.setVisitIndex(visitIndex);
 			appPageLog.setNextPage(nextPage);
-			appPageLog.setCreatedAtMs(createdAtMsS[random.nextInt(createdAtMsS.length)]);
+			appPageLog.setCreatedAtMs(System.currentTimeMillis());
 			result[i] = appPageLog;
 		}
 		return result;
@@ -176,7 +176,7 @@ public class TestGenData {
 			appEventLog.setEventId(eventIds[random.nextInt(eventIds.length)]);
 			appEventLog.setParamKeyValueMap(paramKeyValueMapsS[random.nextInt(paramKeyValueMapsS.length)]);
 			appEventLog.setEventDurationSecs(eventDurationSecsS[random.nextInt(eventDurationSecsS.length)]);
-			appEventLog.setCreatedAtMs(createdAtMsS[random.nextInt(createdAtMsS.length)]);
+			appEventLog.setCreatedAtMs(System.currentTimeMillis());
 			result[i] = appEventLog;
 		}
 		return result;
@@ -190,7 +190,7 @@ public class TestGenData {
 		for (int i = 0; i < 10; i++) {
 			AppUsageLog appUsageLog = new AppUsageLog();
 			appUsageLog.setSingleUseDurationSecs(singleUseDurationSecsS[random.nextInt(singleUseDurationSecsS.length)]);
-			appUsageLog.setCreatedAtMs(createdAtMsS[random.nextInt(createdAtMsS.length)]);
+			appUsageLog.setCreatedAtMs(System.currentTimeMillis());
 			result[i] = appUsageLog;
 		}
 		return result;
@@ -205,7 +205,7 @@ public class TestGenData {
 			AppErrorLog appErrorLog = new AppErrorLog();
 			appErrorLog.setErrorBrief(errorBriefs[random.nextInt(errorBriefs.length)]);
 			appErrorLog.setErrorDetail(errorDetails[random.nextInt(errorDetails.length)]);
-			appErrorLog.setCreatedAtMs(createdAtMsS[random.nextInt(createdAtMsS.length)]);
+			appErrorLog.setCreatedAtMs(System.currentTimeMillis());
 			appErrorLog.setOsType(osTypes[random.nextInt(osTypes.length)]);
 			appErrorLog.setDeviceStyle(deviceStyles[random.nextInt(deviceStyles.length)]);
 			result[i] = appErrorLog;
@@ -284,7 +284,6 @@ public class TestGenData {
 					AppStartupLog[] logArr = logEntity.getAppStartupLogs();
 					for(AppStartupLog log : logArr){
 						PropertiesUtil.copyProperties(logEntity,log);
-						System.out.println("lll");
 					}
 					//
 					//将对象转换成json string
