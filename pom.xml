@@ -9,6 +9,7 @@
   	<module>Analysis-Common</module>
   	<module>Log-app</module>
   	<module>Analysis-Flume</module>
+  	<module>Analysis-Hive</module>
   </modules>
   <dependencyManagement>
 		<dependencies>
